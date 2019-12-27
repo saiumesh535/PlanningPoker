@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">PlanningPoker</string>
     <string name="login">login</string>
+    <string name="cardimage">cardImage</string>
 </resources>

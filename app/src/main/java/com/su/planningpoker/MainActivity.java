@@ -1,30 +1,34 @@
 package com.su.planningpoker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+
+import com.su.planningpoker.adapters.MainCardsAdapter;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button login;
+    private RecyclerView cardsRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        login = findViewById(R.id.login);
+        cardsRecyclerView = findViewById(R.id.cardsRecyclerView);
 
-
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Hey!", Toast.LENGTH_SHORT).show();
-            }
-        });
-
+        // fake size
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(R.drawable.ic_one);
+        list.add(R.drawable.ic_two);
+        list.add(R.drawable.ic_three);
+        list.add(R.drawable.ic_four);
+        MainCardsAdapter mainCardsAdapter = new MainCardsAdapter(MainActivity.this, list);
+        cardsRecyclerView.setAdapter(mainCardsAdapter);
+        cardsRecyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this, 2));
     }
 }
